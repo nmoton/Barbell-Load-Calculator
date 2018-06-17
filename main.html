@@ -11,19 +11,37 @@
 </head>
 <body>
     <form>
-    <div class="container">
-        <h1>Barbell Rack Calculator</h1>
-        <div class="form-group">
-            <label for="TrainingWeight">Targeted Training Weight:</label>
-            <input type="inputTraining" class="form-control" id="inputTraining" placeholder="Enter in pounds" />
-            <label for="BarWeight">Bar Weight:</label>
-            <input type="inputBar" class="form-control" id="inputBar" placeholder="Enter in pounds" />
+        <div class="container">
+            <div class="jumbotron">
+                <center>
+                    <h1>Barbell Load Calculator</h1>
+                </center>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h4>Settings</h4>
+                    <div class="form-group">
+                        <label for="TrainingWeight">Targeted Training Weight:</label>
+                        <input type="inputTraining" class="form-control" id="inputTraining" placeholder="Enter in pounds" />
+                        <label for="BarWeight">Bar Weight:</label>
+                        <input type="inputBar" class="form-control" id="inputBar" placeholder="Enter in pounds" />
+                    </div>
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h4>Results</h4>
+                    <p>Load the following plates on <b>both sides</b> of your 45lb bar:</p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-info">1 x 45lb Plate</li>
+                        <li class="list-group-item list-group-item-info">1 x 25lb Plate</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Calculate</button>
-        </div>
-    </div>
     </form>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
