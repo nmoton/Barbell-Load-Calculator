@@ -10,7 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="/resources/js/home.js" type="text/javascript"></script>
+    <script src="/resources/js/home.js"></script>
+
     <style>
         .container {
             padding-top: 10px;
@@ -46,28 +47,25 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h4>Results</h4>
                     <p>Load the following plates on <b>both sides</b> of your 45lb bar:</p>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-info">1 x 45lb Plate</li>
-                        <li class="list-group-item list-group-item-info">1 x 35lb Plate</li>
-                        <li class="list-group-item list-group-item-info">1 x 25lb Plate</li>
-                        <li class="list-group-item list-group-item-info">1 x 10lb Plate</li>
-                        <li class="list-group-item list-group-item-info">1 x 5lb Plate</li>
-                        <li class="list-group-item list-group-item-info">1 x 2.5lb Plate</li>
+                    <ul class="list-group" id="Results">
                     </ul>
                 </div>
             </div>
             &nbsp;
-            <p><b>Note:</b> This calculator assumes the smallest plate available is 2.5lbs</p>
+            <p><b>Note:</b> This calculator assumes the smallest plate available is 2.5lbs, and the largest plate is 45lbs.</p>
         </div>
     </form>
 
 
     <script>
         function calculatePlates() {
+
+            document.getElementById("Results").innerHTML = ""; //Clears original list
+
             var TargetedWeight = document.getElementById("inputTraining").value;
             var WeightOfBar = document.getElementById("inputBar").value;
 
-            var WeightForCalculations = (TargetedWeight - WeightOfBar) / 2;
+            var WeightForCalculations = Original = (TargetedWeight - WeightOfBar) / 2;
 
             if (WeightForCalculations / 45 != 0) {
                 var NumberOf45Plates = parseInt(WeightForCalculations / 45);
@@ -99,10 +97,16 @@
                 WeightForCalculations -= NumberOfHalf5Plates;
             }
 
-            alert(NumberOf45Plates);
-
-
+            if (WeightForCalculations < Original) {
+                var node = document.createElement("li");
+                node.className = "list-group-item list-group-item-info";
+                var Plates45 = NumberOf45Plates + " x 45lb Plate(s)";
+                var textnode = document.createTextNode(Plates45);
+                node.appendChild(textnode);
+                document.getElementById("Results").appendChild(node);
+            }
         }
+
     </script>
 </body>
 </html>
