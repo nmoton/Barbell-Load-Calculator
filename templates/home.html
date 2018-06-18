@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" />
+<html lang="en">
 <head>
     <title>Barbell Racking Calculator</title>
     <meta charset="utf-8" />
@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="/resources/js/home.js" type="text/javascript"></script>
     <style>
         .container {
             padding-top: 10px;
@@ -34,9 +35,9 @@
                     <h4>Settings</h4>
                     <div class="form-group">
                         <label for="TrainingWeight">Targeted Training Weight:</label>
-                        <input type="inputTraining" class="form-control" id="inputTraining" placeholder="Enter in pounds" />
+                        <input type="number" class="form-control" id="inputTraining" placeholder="Enter in pounds" min="0" max="10000" step="5"/>
                         <label for="BarWeight">Bar Weight:</label>
-                        <input type="inputBar" class="form-control" id="inputBar" placeholder="Enter in pounds" />
+                        <input type="number" class="form-control" id="inputBar" placeholder="Enter in pounds" min="0" max="10000" step="5" />
                     </div>
                     <div class="offset-sm-3 col-sm-10">
                         <button type="submit" class="btn btn-primary" onclick="calculatePlates()">Calculate</button>
@@ -60,8 +61,48 @@
         </div>
     </form>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script>
+        function calculatePlates() {
+            var TargetedWeight = document.getElementById("inputTraining").value;
+            var WeightOfBar = document.getElementById("inputBar").value;
+
+            var WeightForCalculations = (TargetedWeight - WeightOfBar) / 2;
+
+            if (WeightForCalculations / 45 != 0) {
+                var NumberOf45Plates = parseInt(WeightForCalculations / 45);
+                WeightForCalculations -= NumberOf45Plates;
+            }
+
+            if (WeightForCalculations / 35 != 0) {
+                var NumberOf35Plates = parseInt(WeightForCalculations / 35);
+                WeightForCalculations -= NumberOf35Plates;
+            }
+
+            if (WeightForCalculations / 25 != 0) {
+                var NumberOf25Plates = parseInt(WeightForCalculations / 25);
+                WeightForCalculations -= NumberOf25Plates;
+            }
+
+            if (WeightForCalculations / 10 != 0) {
+                var NumberOf10Plates = parseInt(WeightForCalculations / 10);
+                WeightForCalculations -= NumberOf10Plates;
+            }
+
+            if (WeightForCalculations / 5 != 0) {
+                var NumberOf5Plates = parseInt(WeightForCalculations / 5);
+                WeightForCalculations -= NumberOf5Plates;
+            }
+
+            if (WeightForCalculations / 2.5 != 0) {
+                var NumberOfHalf5Plates = parseInt(WeightForCalculations / 2.5);
+                WeightForCalculations -= NumberOfHalf5Plates;
+            }
+
+            alert(NumberOf45Plates);
+
+
+        }
+    </script>
 </body>
 </html>
