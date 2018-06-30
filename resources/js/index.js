@@ -19,7 +19,7 @@ function calculatePlates() {
     else {
         document.getElementById("Load").innerHTML = "Load the following plates on <b>both sides</b> of your " + WeightOfBar + "lb bar:";
 
-        if ((WeightForCalculations % 5) > 0) {
+        if (parseInt(TargetedWeight % 5) || (WeightOfBar % 5) > 0) {
             var node = document.createElement("li");
             node.className = "list-group-item list-group-item-warning";
             var textnode = document.createTextNode("Training Weight or Bar Weight is NOT an integer multiple of 5! Calculation is ONLY AN ESTIMATE!")
