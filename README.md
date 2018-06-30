@@ -1,2 +1,2 @@
-# Lifting_Calculator
+# Barbell Load Calculator
 Lifting Calculator for Gains
